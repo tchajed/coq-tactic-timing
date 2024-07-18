@@ -76,5 +76,5 @@ if __name__ == "__main__":
     tactics = df.groupby(['tactic', 'success'], sort=False)
     print("Stats")
     pd.set_option('display.width', 150)
-    aggregated = tactics['time'].agg(['sum', 'count', 'mean', 'std'])
+    aggregated = tactics['time'].agg(['sum', 'count', 'mean', 'max'])
     print(aggregated.sort_values(by='sum', ascending=False))
