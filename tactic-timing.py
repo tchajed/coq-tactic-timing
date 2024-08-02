@@ -2,7 +2,6 @@
 
 import re
 import pandas as pd
-import numpy as np
 
 class TimeReport:
     def __init__(self, tactic, time, success, backtracks):
@@ -41,7 +40,19 @@ if __name__ == "__main__":
     import sys
 
     parser = argparse.ArgumentParser(
-            formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+        description="""
+            Aggregate statistics from Ltac time output.
+
+            To use this script, add `time "label"` in front of tactic to be measured,
+            then run Coq (interactively or in batch). Pass the output to this script
+            to get an aggregate view of each label's timing.
+
+            For interactive use it's convenient to pipe the input from a clipboard
+            tool (like pbpaste on macOS) and use `-` as the input file to
+            tactic-timing.py.
+            """,
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+    )
     parser.add_argument("-t", "--threshold",
             type=float,
             default=0.1,
